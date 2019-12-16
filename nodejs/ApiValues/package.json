@@ -1,0 +1,25 @@
+{
+  "name": "apivalues",
+  "version": "1.0.0",
+  "description": "My fist API sample/demo to learn Nodejs",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "1.17.2",
+    "eslint-plugin-node": "5.1.1",
+    "express": "^4.17.1",
+    "mongodb": "^3.4.0",
+    "mongoose": "^5.8.1",
+    "swagger": "^0.7.5",
+    "swagger-ui-express": "^4.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "JuanluElGuerre",
+  "license": "MIT"
+}
