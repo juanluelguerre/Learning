@@ -1,11 +1,12 @@
-"use strict";
+'use strict';
 
 // Node Modules
-const express = require("express");
-const router = express.Router();
+const express = require('express');
+const service = require('../../application/services/usersService');
+const User = require('../../application/models/User');
+const {mongoose} = require('../../config/startup');
 
-// App Modules
-const User = require("../Models/User");
+const router = express.Router();
 
 /**
  * @swagger
@@ -28,28 +29,46 @@ const User = require("../Models/User");
  *            schema:
  *              $ref: '#/components/schemas/User'
  *      responses:
- *        "200":
+ *        '200':
  *          description: A user schema
  *          content:
  *            application/json:
  *              schema:
  *                $ref: '#/components/schemas/User'
  */
-router.post("/users", (req, res, next) => {
+router.post('/users', (req, res, next) => {
   const { email, name } = req.body;
   const user = new User(name, email);
+
+  service.createUser();
+
   res.json(user);
 });
 
-router.get("/users", (req, res, next) => {
-  const userOne = new User("Alexander", "fake@gmail.com");
-  const userTwo = new User("Ryan", "fakeagain@gmail.com");
+/**
+ * @swagger
+ * path:
+ *  /users/:
+ *    get:
+ *      summary: Get all users
+ *      tags: [Users]
+ *      responses:
+ *        '200':
+ *          description: An array of users
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/User'
+ */
+router.get('/users', (req, res, next) => {
+  const userOne = new User('Alexander', 'fake@gmail.com');
+  const userTwo = new User('Ryan', 'fakeagain@gmail.com');
   res.json({ userOne, userTwo });
 });
 
 // catch 404 and forward to error handler
 router.use(function(req, res, next) {
-  var err = new Error("Not Found");
+  var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });

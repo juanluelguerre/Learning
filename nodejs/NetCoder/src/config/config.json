@@ -1,0 +1,10 @@
+{
+    "development": {
+        "configId": "development",
+        "appName": "NodeJS for NET Coder",        
+        "nodePort": 3000,        
+        "mongodbConnectionString": "mongodb://localhost:27017/NetCoder"
+    },
+    "production": {
+    }
+}

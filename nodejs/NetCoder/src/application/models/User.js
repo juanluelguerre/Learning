@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * @swagger
  *  components:
@@ -18,8 +20,6 @@
  *           name: Alexander
  *           email: fake@email.com
  */
-'use strict';
-
 class User {
   constructor(name, email) {
     this.name = name;
