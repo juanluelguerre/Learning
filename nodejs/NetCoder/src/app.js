@@ -46,7 +46,7 @@ const server = app.listen(PORT, () => {
   const host = server.address().address;
   const { port } = server.address();
 
-  logger.info('App listening at http://%s:%s', host, port);
+  logger.info(`App listening at http://${host}:${port}`);
 });
 
 module.exports = app;

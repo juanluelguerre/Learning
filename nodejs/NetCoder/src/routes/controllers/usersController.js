@@ -4,7 +4,7 @@
 const express = require('express');
 const service = require('../../application/services/usersService');
 const User = require('../../application/models/User');
-const {mongoose} = require('../../config/startup');
+// const {mongoose} = require('../../config/startup');
 
 const router = express.Router();
 

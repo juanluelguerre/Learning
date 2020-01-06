@@ -1,14 +1,14 @@
-"use strict";
+'use strict';
 
-const swaggerUi = require("swagger-ui-express");
-const swaggerJSDoc = require("swagger-jsdoc");
-const structuredLog = require("structured-log");
-const mongoose = require("mongoose");
-const _ = require("lodash");
-const configFile = require("./config.json");
+const swaggerUi = require('swagger-ui-express');
+const swaggerJSDoc = require('swagger-jsdoc');
+const structuredLog = require('structured-log');
+const mongoose = require('mongoose');
+const _ = require('lodash');
+const configFile = require('./config.json');
 
 const defaultConfig = configFile.development;
-const environment = process.env.NODE_ENV || "development";
+const environment = process.env.NODE_ENV || 'development';
 const environmentConfig = configFile[environment];
 const config = _.merge(defaultConfig, environmentConfig);
 
@@ -20,7 +20,7 @@ const logger = structuredLog
   .create(true);
 
 // MongoDB
-logger.verbose("Configuring Mongo dB...");
+logger.verbose('Configuring Mongo dB...');
 
 // mongoose file must be loaded before all other files in order to provide
 // models to other modules
@@ -32,27 +32,27 @@ mongoose.connect(config.mongodbConnectionString, {
   useUnifiedTopology: true
 });
 
-logger.verbose("Done !");
+logger.verbose('Done !');
 
 // Swagger
 // Ref: https://levelup.gitconnected.com/swagger-time-to-document-that-express-api-you-built-9b8faaeae563
 // Swagger set up
 const options = {
   swaggerDefinition: {
-    openapi: "3.0.0",
+    openapi: '3.0.0',
     info: {
-      title: "Time to document that Express API you built",
-      version: "1.0.0",
+      title: `${config.appName}`,
+      version: '1.0.0',
       description:
-        "A test project to understand how easy it is to document and Express API",
+        'A test project to understand how easy it is to document and Express API',
       license: {
-        name: "MIT",
-        url: "https://choosealicense.com/licenses/mit/"
+        name: 'MIT',
+        url: 'https://choosealicense.com/licenses/mit/'
       },
       contact: {
-        name: "Swagger",
-        url: "https://swagger.io",
-        email: "jlguerrero@gmail.com"
+        name: 'Swagger',
+        url: 'https://swagger.io',
+        email: 'jlguerrero@gmail.com'
       }
     },
     servers: [
@@ -63,8 +63,8 @@ const options = {
   },
   apis: [
     // jsdoc files to configure swagger.
-    "../application/models/User.js",
-    "../routes/controllers/usersController.js"
+    './src/application/models/User.js',
+    './src/routes/controllers/usersController.js'
   ]
 };
 
